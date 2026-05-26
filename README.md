@@ -6,6 +6,49 @@
 
 ---
 
+## 이 템플릿으로 새 프로젝트 시작하기
+
+GitHub의 **"Use this template"** 버튼으로 새 레포 만든 뒤:
+
+```bash
+# 1. 클론 후 의존성 설치
+git clone <your-new-repo> my-project
+cd my-project
+npm install
+
+# 2. package.json 의 "name" 을 새 프로젝트 이름으로 변경
+
+# 3. 샘플 도메인(order/user/notification) 은 패턴 학습용.
+#    필요 없으면 modules/, scenarios/, app/orders, use-cases/ 비우고 시작.
+
+# 4. 첫 모듈 만들기
+npm run new:module <module-name>
+
+# 5. 아키텍처 규칙 검증
+npm run check
+```
+
+### 모듈 추가
+
+```bash
+npm run new:module payment
+```
+
+`modules/payment/` 아래 `index.ts`, `internal/{domain,data,actions}/` stub이 생깁니다.
+도메인 타입, repository, action을 채운 뒤 `npm run check` 로 규칙 위반 확인.
+
+### 핵심 명령어
+
+| 명령어 | 역할 |
+| --- | --- |
+| `npm run dev` | Next.js 개발 서버 (port 3030) |
+| `npm run check` | typecheck + lint + 아키텍처 검증 |
+| `npm run new:module <name>` | 새 모듈 stub 생성 |
+| `npm run scenario:order` | 주문 흐름 시나리오 실행 |
+| `npm run scenario:failure` | 실패/재시도 시나리오 실행 |
+
+---
+
 ## 왜 AFMMA인가?
 
 AI 코딩 에이전트는 기존 패턴을 따라 작은 범위의 코드를 수정하는 데 강합니다. 하지만 코드베이스에 아래 문제가 있으면 품질이 빠르게 떨어집니다.
